@@ -1,0 +1,128 @@
+
+/* Initially setting margin and paddding to 0 */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    min-height: 100vh;
+    font-family: "Inconsolata", monospace;
+    font-size: 14px;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.container{
+    height: 600px;
+    width: 400px;
+    padding: 30px;
+    margin: 30px;
+    background-color: #F7F7F7;
+}
+
+.header{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.notepad{
+    height: 50px;
+    width: 50px;
+}
+
+h1{
+    font-weight: 400;
+    padding-left: 20px;
+}
+
+.input-form{
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px ;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.add-button{
+    background-color: rgb(218, 41, 41);
+    color: #EFEEEA;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 0px 290px 20px 0px;
+    cursor: pointer;
+}
+
+.add-button:hover{
+    background-color: #a6514b;
+}
+
+.filter-input{
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid #ccc;
+}
+
+.ul-list{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.ul-list li {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 150px;
+}
+
+.remove-item {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* .remove-item i {
+  pointer-events: none; 
+} */
+
+.clear-all{
+    width: 100%;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-weight: 300;
+    margin-top: 15px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.clear-all:hover{
+    background-color: #f5f5f5;
+}
+
+
+
+
