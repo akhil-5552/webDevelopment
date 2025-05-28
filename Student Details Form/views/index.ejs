@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full stack Web Application</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <h1>Student Details Form </h1>
+    <% if (students.length > 0) { %>
+    <table>
+        <thead id="studentTable">
+            <tr>
+                <th>RollNo</th>
+                <th>Name</th>
+                <th>Degree</th>
+                <th>City</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% students.forEach((student) => { %>
+                <tr class="table-contents">
+                    <td><%= student.rollno %></td>
+                    <td><%= student.name %></td>
+                    <td><%= student.degree %></td>
+                    <td><%= student.city %></td>
+                    <td>
+                        <form action="/delete/ <%= student._id %>" method="post">
+                            <button class="remove-item button-link red-button">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <% } else { %>
+        <tr>
+            <td colspan="5">
+                <p class="no-data-message">No student records found.</p>
+            </td>
+        </tr>
+    <% } %>
+    <div>
+        <form action="/save" method="post" class="input-form">
+            <div>
+                <label for="rollno">Roll No :</label>
+                <input type="text" name="rollno" id="rollno">
+            </div>
+            <div>
+                <label for="name">Name :</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div>
+                <label for="degree">Degree :</label>
+                <input type="text" name="degree" id="degree">
+            </div>
+            <div>
+                <label for="city">City :</label>
+                <input type="text" name="city" id="city">
+            </div>
+            <div>
+                <button type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        const form = document.querySelector("form[action='/save']")
+        form.addEventListener("submit", function(event){
+            const rollno = document.getElementById('rollno').value.trim()
+            const name = document.getElementById('name').value.trim()
+            const degree = document.getElementById('degree').value.trim()
+            const city = document.getElementById('city').value.trim() 
+
+            if( !rollno || !name || !degree || !city  ){
+                alert("Enter valid details!")
+                event.preventDefault()
+            }else{
+                form.style.display = 'none'
+            }
+        })
+    </script>
+</body>
+</html>
