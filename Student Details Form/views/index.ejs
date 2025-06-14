@@ -22,6 +22,7 @@
                 <th>Degree</th>
                 <th>City</th>
                 <th>Remove</th>
+                <th>Edit</th>
             </tr>
         </thead>
         <tbody>
@@ -37,6 +38,12 @@
                                 <i class="fa-solid fa-xmark"></i>
                             </button>
                         </form>
+                    </td>
+                    <td>
+                        <button class="edit-item button-link blue-button" type="button"
+                          onclick="editStudent('<%= student._id %>', '<%= student.rollno %>', '<%= student.name %>', '<%= student.degree %>', '<%= student.city %>')">
+                          <i class="fa-solid fa-pen"></i>
+                        </button>
                     </td>
                 </tr>
             <% }) %>
@@ -87,6 +94,36 @@
                 form.style.display = 'none'
             }
         })
+
+        const forms = document.querySelector(".input-form");
+        const submitBtn = form.querySelector("button[type='submit']");
+        let editingId = null;
+
+          function editStudent(id, rollno, name, degree, city) {
+            document.getElementById('rollno').value = rollno;
+            document.getElementById('name').value = name;
+            document.getElementById('degree').value = degree;
+            document.getElementById('city').value = city;
+            forms.action = `/update/${id}`;
+            submitBtn.innerText = "Update";
+            editingId = id;
+        }
+
+        form.addEventListener("submit", function(event){
+            const rollno = document.getElementById('rollno').value.trim();
+            const name = document.getElementById('name').value.trim();
+            const degree = document.getElementById('degree').value.trim();
+            const city = document.getElementById('city').value.trim(); 
+            
+            if (!rollno || !name || !degree || !city) {
+                alert("Enter valid details!");
+                event.preventDefault();
+            }
+
+            if (!editingId) {
+                form.action = "/save";
+            }
+        });
     </script>
 </body>
 </html>
