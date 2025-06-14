@@ -33,4 +33,13 @@ app.post('/delete/:id', async(req, res)=> {
     res.redirect('/')
 })
 
+app.post('/update/:id', async (req, res) => {
+    const { rollno, name, degree, city } = req.body;
+    await Student.findByIdAndUpdate(req.params.id, { rollno, name, degree, city });
+    res.redirect('/');
+});
+
 app.listen((port),() =>{console.log(`server running on :${port}`)} )
+
+
+
